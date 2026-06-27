@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Gowthami S</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/chatbot.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="thread-rail"></div>
+
+<header class="nav">
+  <a href="../index.html" class="nav-mark"><span class="dot"></span> GOWTHAMI&nbsp;S</a>
+  <nav class="nav-links">
+    <a href="../index.html#profile">Profile</a>
+    <a href="../index.html#education">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="../index.html#skills">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="page-hero">
+  <div class="eyebrow"><span class="bracket">[</span> 05 / PROJECTS <span class="bracket">]</span></div>
+  <h1>What I've built so far</h1>
+  <p>Secure AI systems, civic technology, and IoT automation — projects built to test ideas about privacy, trust, and real-world impact.</p>
+  <a href="../index.html" class="back-link">← Back to home</a>
+</div>
+
+<section class="section" style="padding-top:1rem;">
+  <div class="project-grid reveal">
+
+    <div class="project-card">
+      <span class="project-index">01</span>
+      <h3>AI-Powered Secure LLM Chatbot</h3>
+      <span class="ptag">Privacy-First Offline AI Assistant</span>
+      <p>Developed a secure offline chatbot using local Large Language Models with backend integration and privacy-focused architecture for intelligent assistance without cloud dependency.</p>
+      <div class="stack-row">
+        <span class="stack-chip">Ollama</span><span class="stack-chip">Mistral</span>
+        <span class="stack-chip">Java</span><span class="stack-chip">Docker</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-index">02</span>
+      <h3>Weaver Connect</h3>
+      <span class="ptag">Connecting Weavers Directly to the Market</span>
+      <p>A digital platform that enables traditional weavers to sell products directly to customers, promoting fair pricing and preserving local craftsmanship. Presented at the StartupTN Innovation Program — placed in the Top 5.</p>
+      <div class="stack-row">
+        <span class="stack-chip">React</span><span class="stack-chip">JavaScript</span>
+        <span class="stack-chip">HTML</span><span class="stack-chip">CSS</span><span class="stack-chip">Bootstrap</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-index">03</span>
+      <h3>Smart Silk Farm Automation</h3>
+      <span class="ptag">IoT-Based Monitoring &amp; Control System</span>
+      <p>Built an automated monitoring solution for silk farming that tracks temperature and humidity while providing real-time cloud-based visualization and control.</p>
+      <div class="stack-row">
+        <span class="stack-chip">ESP8266</span><span class="stack-chip">DHT11</span>
+        <span class="stack-chip">Embedded C</span><span class="stack-chip">ThingSpeak</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-index">04</span>
+      <h3>CyberSentinel AI</h3>
+      <span class="ptag">Offline Multi-Agent Cybersecurity Platform</span>
+      <p>An intelligent cybersecurity platform combining threat hunting, digital forensics, incident response, compliance auditing, and LLM security protection through specialized AI agents operating completely offline.</p>
+      <div class="stack-row">
+        <span class="stack-chip">Ollama</span><span class="stack-chip">Mistral</span>
+        <span class="stack-chip">Python</span><span class="stack-chip">Java</span>
+        <span class="stack-chip">Docker</span><span class="stack-chip">AI Agents</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-index">05</span>
+      <h3>JusticeFlow AI</h3>
+      <span class="ptag">AI-Powered Court Case Prioritization System</span>
+      <p>A smart judicial support platform designed to assist courts in prioritizing cases based on urgency, case type, public impact, legal deadlines, and case complexity — helping reduce backlog and improve access to justice.</p>
+      <div class="stack-row">
+        <span class="stack-chip">Python</span><span class="stack-chip">Machine Learning</span>
+        <span class="stack-chip">AI Analytics</span><span class="stack-chip">Database Systems</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Gowthami S. <span class="tag">// built with care, secured by design</span></p>
+</footer>
+
+<button id="bot-toggle" aria-label="Ask about Gowthami">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 1 1-4.43 7.46L3 21l1.96-5.23A8.45 8.45 0 0 1 3 11.5a8.5 8.5 0 0 1 18 0z"/></svg>
+</button>
+<div id="bot-panel">
+  <div class="bot-head"><span class="dot"></span> Ask about Gowthami</div>
+  <div class="bot-body" id="bot-body">
+    <div class="bot-msg bot">Hi! Ask me about projects, internships, skills, certifications, or how to reach Gowthami.</div>
+  </div>
+  <div class="bot-quick">
+    <button class="bot-chip">Projects</button>
+    <button class="bot-chip">Internships</button>
+    <button class="bot-chip">Skills</button>
+    <button class="bot-chip">Contact</button>
+  </div>
+  <div class="bot-input-row">
+    <input type="text" id="bot-input" placeholder="Type a question…">
+    <button id="bot-send" aria-label="Send">→</button>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/chatbot.js"></script>
+</body>
+</html>

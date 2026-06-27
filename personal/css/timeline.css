@@ -1,0 +1,18 @@
+/* ============================================================
+   TIMELINE — extra refinements layered on top of .timeline
+   in style.css (kept separate per project structure)
+   ============================================================ */
+.tl-item{ position:relative; }
+.tl-item .tl-marker{
+  position:absolute; left:-7px; top:1.9rem;
+  width:9px; height:9px; border-radius:50%;
+  background:var(--ink-soft); border:2px solid var(--panel-line);
+}
+.tl-item.active .tl-marker{
+  border-color:var(--signal); background:var(--signal);
+  box-shadow:0 0 0 3px var(--signal-dim);
+}
+
+@media (max-width:600px){
+  .tl-item .tl-marker{ display:none; }
+}

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievements — Gowthami S</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ============================================================
+   ACHIEVEMENTS PAGE STYLES
+   ============================================================ */
+
+/* Stats Section */
+.achievement-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: rgba(12, 20, 35, 0.5);
+    border: 1px solid rgba(0, 180, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.stat-card:hover {
+    border-color: rgba(0, 180, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+.stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #00d4ff;
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #8aa3c9;
+    margin-top: 0.3rem;
+}
+
+/* Achievement Grid */
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+}
+
+.achievement-card {
+    background: rgba(12, 20, 35, 0.5);
+    border: 1px solid rgba(0, 180, 255, 0.06);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.achievement-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 180, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-image {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #0a0d17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: 0.4s;
+    background: #0a0d17;
+    padding: 0.5rem;
+}
+
+.achievement-card:hover .achievement-image img {
+    transform: scale(1.03);
+}
+
+.achievement-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 212, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    color: #00d4ff;
+    padding: 0.3rem 0.9rem;
+    border-radius: 30px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.achievement-content {
+    padding: 1.4rem 1.6rem 1.6rem;
+}
+
+.achievement-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #4a6a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.achievement-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f0faff;
+    margin: 0.4rem 0 0.3rem;
+}
+
+.achievement-location {
+    font-size: 0.82rem;
+    color: #8aa3c9;
+    margin-bottom: 0.8rem;
+}
+
+.achievement-location i {
+    color: #00d4ff;
+    margin-right: 0.3rem;
+}
+
+.achievement-content p {
+    font-size: 0.88rem;
+    color: #b0c7e7;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.achievement-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.achievement-tags .tag {
+    background: #111b2b;
+    border: 1px solid #1a2a44;
+    border-radius: 20px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.7rem;
+    color: #b0c7e7;
+    transition: 0.2s;
+}
+
+.achievement-tags .tag:hover {
+    border-color: #00d4ff;
+    color: #00d4ff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .achievement-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .achievement-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .achievement-image {
+        height: 200px;
+    }
+    
+    .achievement-content {
+        padding: 1rem 1.2rem 1.2rem;
+    }
+}
+
+/* Navigation Styles */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.nav-mark {
+    color: #eef2ff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-mark .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00d4ff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00d4ff66;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #8aa3c9;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.nav-links a:hover {
+    color: #00d4ff;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background: #eef2ff;
+    border-radius: 2px;
+}
+
+.page-hero {
+    padding: 2.5rem 2.5rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-hero .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #4a6a8a;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.page-hero .eyebrow .bracket {
+    color: #00d4ff;
+}
+
+.page-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #f0faff;
+    margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+    color: #8aa3c9;
+    font-size: 1rem;
+    max-width: 600px;
+    margin-bottom: 1.2rem;
+}
+
+.back-link {
+    color: #4a6a8a;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.back-link:hover {
+    color: #00d4ff;
+}
+
+.section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem 3rem;
+}
+
+footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    color: #4a6a8a;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+footer .tag {
+    color: #2a4a5a;
+}
+
+body {
+    background: #080b14;
+    font-family: 'Inter', sans-serif;
+    color: #eef2ff;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.thread-rail {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, #2A3349 4%, #2A3349 96%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem 1.2rem;
+    }
+    
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 0.8rem;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .page-hero {
+        padding: 1.5rem 1.2rem 1rem;
+    }
+    
+    .page-hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .section {
+        padding: 0 1.2rem 2rem;
+    }
+    
+    footer {
+        padding: 1rem 1.2rem;
+        font-size: 0.7rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="thread-rail"></div>
+
+<!-- NAVIGATION -->
+<header class="nav">
+  <a href="../index.html" class="nav-mark"><span class="dot"></span> GOWTHAMI&nbsp;S</a>
+  <nav class="nav-links" id="navLinks">
+    <a href="../index.html#profile">Profile</a>
+    <a href="../index.html#education">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="../index.html#skills">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="eyebrow"><span class="bracket">[</span> 07 / ACHIEVEMENTS &amp; EVENTS <span class="bracket">]</span></div>
+  <h1>Hackathons, CTFs &amp; Workshops</h1>
+  <p>Active participation in cybersecurity competitions, hackathons, and technical workshops across Tamil Nadu.</p>
+  <a href="../index.html" class="back-link">← Back to home</a>
+</div>
+
+<!-- ACHIEVEMENTS SECTION -->
+<section class="section">
+  
+  <!-- Achievement Stats -->
+  <div class="achievement-stats">
+    <div class="stat-card">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Events Participated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Hackathons</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">CTF Competitions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Workshops</div>
+    </div>
+  </div>
+
+  <!-- Achievement Cards -->
+  <div class="achievement-grid">
+
+    <!-- 1. Geeks for Geeks CTF -->
+    <div class="achievement-card">
+      <div class="achievement-image">
+        <img src="../assets/achievements/geeksforgeeks-ctf.jpg" alt="Geeks for Geeks CTF Participation" loading="lazy">
+        <div class="achievement-badge">CTF</div>
+      </div>
+      <div class="achievement-content">
+        <div class="achievement-date">March 2025</div>
+        <h3>Geeks for Geeks CTF</h3>
+        <p class="achievement-location"><i class="bi bi-geo-alt"></i> KSR Institute for Engineering and Technology</p>
+        <p>Participated in the Capture The Flag competition conducted by GFG Student Chapter - KSRIET. Solved challenges in cryptography, web exploitation, and reverse engineering.</p>
+        <div class="achievement-tags">
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">CTF</span>
+          <span class="tag">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. TN Startup Card Holder -->
+    <div class="achievement-card">
+      <div class="achievement-image">
+        <img src="../assets/achievements/tn-startup-card.jpg" alt="TN Startup Card Holder" loading="lazy">
+        <div class="achievement-badge">Startup</div>
+      </div>
+      <div class="achievement-content">
+        <div class="achievement-date">2024</div>
+        <h3>TN Startup Card Holder</h3>
+        <p class="achievement-location"><i class="bi bi-geo-alt"></i> Tamil Nadu</p>
+        <p>Recognized as a startup innovator under the Tamil Nadu Startup Mission. Received the TN Startup Card for innovative contributions through the Weaver Connect project.</p>
+        <div class="achievement-tags">
+          <span class="tag">Innovation</span>
+          <span class="tag">Startup</span>
+          <span class="tag">Entrepreneurship</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. National Level Women's Hackathon - PMC Tech -->
+    <div class="achievement-card">
+      <div class="achievement-image">
+        <img src="../assets/achievements/pmc-tech-hackathon.jpg" alt="National Level Women's Hackathon" loading="lazy">
+        <div class="achievement-badge">Hackathon</div>
+      </div>
+      <div class="achievement-content">
+        <div class="achievement-date">2024</div>
+        <h3>National Level Women's Hackathon</h3>
+        <p class="achievement-location"><i class="bi bi-geo-alt"></i> PMC Tech, Hosur</p>
+        <p>Attended the National Level Women's Hackathon at Er. Perumal Manimekalai College of Engineering (PMC Tech), Hosur. Collaborated with women developers to build innovative solutions.</p>
+        <div class="achievement-tags">
+          <span class="tag">Hackathon</span>
+          <span class="tag">Women in Tech</span>
+          <span class="tag">Innovation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Rajalakshmi Engineering College -->
+    <div class="achievement-card">
+      <div class="achievement-image">
+        <img src="../assets/achievements/rajalakshmi-ec.jpg" alt="Rajalakshmi Engineering College" loading="lazy">
+        <div class="achievement-badge">Event</div>
+      </div>
+      <div class="achievement-content">
+        <div class="achievement-date">2024</div>
+        <h3>Rajalakshmi Engineering College</h3>
+        <p class="achievement-location"><i class="bi bi-geo-alt"></i> Chennai</p>
+        <p>Participated in technical events and workshops at Rajalakshmi Engineering College, Chennai. Engaged with peers on emerging technologies and cybersecurity topics.</p>
+        <div class="achievement-tags">
+          <span class="tag">Technical Event</span>
+          <span class="tag">Networking</span>
+          <span class="tag">Chennai</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Bharathidasan University - CTF -->
+    <div class="achievement-card">
+      <div class="achievement-image">
+        <img src="../assets/achievements/bharathidasan-ctf.jpg" alt="Bharathidasan University CTF" loading="lazy">
+        <div class="achievement-badge">CTF</div>
+      </div>
+      <div class="achievement-content">
+        <div class="achievement-date">2024</div>
+        <h3>Bharathidasan University CTF</h3>
+        <p class="achievement-location"><i class="bi bi-geo-alt"></i> Trichy</p>
+        <p>Attended and participated in the Capture The Flag competition organized at Bharathidasan University, Trichy. Competed in cybersecurity challenges and network security puzzles.</p>
+        <div class="achievement-tags">
+          <span class="tag">CTF</span>
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Trichy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Karpagam College of Engineering - DevOps Workshop -->
+    <div class="achievement-card">
+      <div class="achievement-image">
+        <img src="../assets/achievements/karpagam-devops.jpg" alt="Karpagam College DevOps Workshop" loading="lazy">
+        <div class="achievement-badge">Workshop</div>
+      </div>
+      <div class="achievement-content">
+        <div class="achievement-date">2024</div>
+        <h3>DevOps Workshop</h3>
+        <p class="achievement-location"><i class="bi bi-geo-alt"></i> Karpagam College of Engineering, Coimbatore</p>
+        <p>Attended a hands-on DevOps workshop at Karpagam College of Engineering, Coimbatore. Learned about CI/CD pipelines, containerization, and modern deployment strategies.</p>
+        <div class="achievement-tags">
+          <span class="tag">DevOps</span>
+          <span class="tag">Workshop</span>
+          <span class="tag">Coimbatore</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Gowthami S. <span class="tag">// built with care, secured by design</span></p>
+</footer>
+
+<script>
+// Mobile nav toggle
+document.getElementById('navToggle').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('active');
+});
+</script>
+
+</body>
+</html>

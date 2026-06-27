@@ -1,0 +1,28 @@
+/* ============================================================
+   TERMINAL — small interactive console embedded in the hero
+   ============================================================ */
+.console{
+  margin-top:2.4rem; max-width:520px;
+  background:var(--ink-soft); border:1px solid var(--panel-line);
+  border-radius:10px; overflow:hidden;
+  font-family:var(--font-mono); font-size:.82rem;
+}
+.console-bar{
+  display:flex; align-items:center; gap:.5rem;
+  padding:.6rem .9rem; background:var(--panel); border-bottom:1px solid var(--panel-line);
+}
+.console-bar .cdot{ width:9px; height:9px; border-radius:50%; }
+.console-bar .cdot:nth-child(1){ background:#E2664D; }
+.console-bar .cdot:nth-child(2){ background:#E8C547; }
+.console-bar .cdot:nth-child(3){ background:#5EEAD4; }
+.console-title{ margin-left:.5rem; color:var(--bone-dim); font-size:.74rem; }
+
+.console-body{ padding:1rem 1.1rem; min-height:118px; }
+.console-line{ color:var(--bone-dim); margin-bottom:.4rem; }
+.console-line .prompt{ color:var(--signal); margin-right:.5rem; }
+.console-line .val{ color:var(--bone); }
+.console-cursor{
+  display:inline-block; width:7px; height:14px; background:var(--signal);
+  vertical-align:middle; animation:blink 1s step-end infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
